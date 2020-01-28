@@ -44,7 +44,10 @@ export const AddressList = () => {
       {
         addresses.map((data, i) => (
           <div key={i}>
-
+            <h3>{data.name}</h3>
+            <p>{data.notes}</p>
+            <p>{data.location.latitude}</p>
+            <p>{data.location.longitude}</p>
           </div> 
         ))
       }
