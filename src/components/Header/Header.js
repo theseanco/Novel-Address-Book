@@ -9,7 +9,7 @@ import React from 'react';
 
 const Header = () => {
   return (
-    <header>
+    <header data-testid="header">
       <h1>Address Book App</h1>
     </header>
   )

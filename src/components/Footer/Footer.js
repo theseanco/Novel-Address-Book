@@ -12,7 +12,7 @@ const Header = () => {
   const date = new Date().getFullYear();
 
   return (
-    <footer>
+    <footer data-testid="footer">
       <h5>Sean Cotterill, {date}</h5>
     </footer>
   )
