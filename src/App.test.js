@@ -1,9 +1,12 @@
 import React from 'react';
-import { render } from '@testing-library/react';
+import { render, getByTestId } from '@testing-library/react';
 import App from './App';
 
-test('renders learn react link', () => {
-  const { getByText } = render(<App />);
-  const linkElement = getByText(/learn react/i);
-  expect(linkElement).toBeInTheDocument();
+describe('App Root tests', () => {
+
+  it('Should contain a header and a footer', () => {
+    const { container } = render(<App />);
+    expect(getByTestId(container, 'header')).toBeInTheDocument();
+    expect(getByTestId(container, 'footer')).toBeInTheDocument();
+  })
 });
