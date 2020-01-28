@@ -1,3 +1,9 @@
+/*
+
+A component which fetches address data TODO, and renders it using the Address Card component
+
+*/
+
 import React, { useEffect, useState } from 'react';
 
 export const getAddresses = () => (
