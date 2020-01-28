@@ -1,4 +1,11 @@
+/*
+
+A component which fetches address data TODO, and renders it using the Address Card component
+
+*/
+
 import React, { useEffect, useState } from 'react';
+import AddressCard from './AddressCard/AddressCard'
 
 export const getAddresses = () => (
   [
@@ -43,12 +50,12 @@ export const AddressList = () => {
     <>
       {
         addresses.map((data, i) => (
-          <div key={i}>
-            <h3>{data.name}</h3>
-            <p>{data.notes}</p>
-            <p>{data.location.latitude}</p>
-            <p>{data.location.longitude}</p>
-          </div> 
+          <AddressCard 
+            key={i} 
+            name={data.name} 
+            notes={data.notes} 
+            location={data.location} 
+          />
         ))
       }
     </>

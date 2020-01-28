@@ -1,3 +1,5 @@
+//TODO: is AddressComponentry right for this? Won't know until things are ironed out with data fetching
+
 import React from 'react';
 import { render } from '@testing-library/react';
 import * as addressComponentry from './AddressList'
