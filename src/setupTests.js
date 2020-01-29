@@ -33,6 +33,8 @@ window.google = {
       },
 
       MarkerClusterer:class{},
-      Geocoder:class{},
+      Geocoder:class{
+          geocode() {}
+      },
   }
 };
