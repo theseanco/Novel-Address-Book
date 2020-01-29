@@ -21,7 +21,9 @@ describe('AddressCard tests', () => {
   })
   
   it('Should call the external function to retrieve address', async () => {
+    // Mock reverse geocoding function
     reverseGeocoding.default = jest.fn(() => 'fake address')
+
     await act(async () => {
       const { container } = await render(
         <AddressCard 
@@ -30,6 +32,7 @@ describe('AddressCard tests', () => {
         location={ { latitude: 1, longitude: 60 } }/>
       )
       await wait(() => {
+        // Text from mock function should end up in document
         expect(getByText(container, /fake address/)).toBeInTheDocument();
       });
     })
