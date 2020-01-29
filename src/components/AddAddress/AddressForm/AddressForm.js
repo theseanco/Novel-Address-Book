@@ -1,8 +1,13 @@
 import React, { useState } from "react";
+import GeolocationForm from '../GeolocationForm/GeolocationForm';
 
 const AddressForm = (props) => {
   const [name, setName] = useState("");
   const [notes, setNotes] = useState("");
+  const [coordinates, setCoordinates] = useState({
+    lat: null,
+    lng: null
+  });
   
   const handleSubmit = (e) => {
       e.preventDefault();
@@ -28,12 +33,8 @@ const AddressForm = (props) => {
         />
       </label>
       <label>
-        Location:
-        <input
-          type="text"
-          value={name}
-          onChange={e => setName(e.target.value)}
-        />
+        Address:
+        <GeolocationForm setLocationHook={setCoordinates}/>
       </label>
       <input type="submit" value="Submit" />
     </form>

@@ -7,7 +7,7 @@ describe('AddressForm tests', () => {
     const { container } = render(<AddressForm />);
     expect(getByLabelText(container, /Name/)).toBeInTheDocument();
     expect(getByLabelText(container, /Notes/)).toBeInTheDocument();
-    expect(getByLabelText(container, /Location/)).toBeInTheDocument();
+    expect(getByLabelText(container, /Address/)).toBeInTheDocument();
   })
 
 
