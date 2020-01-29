@@ -16,12 +16,12 @@ const reverseGeocode = (inputAddress) => {
 */
 
 // Wrap google geocoder in a promise to better handle async fetching
-const reverseGeocode = address => {
+const reverseGeocode = locationObject => {
   return new Promise((resolve, reject) => {
     // Initialise the geocoder
     const geocoder = new window.google.maps.Geocoder();
     // use supplied address object to reverse-geocode location
-    geocoder.geocode({ location: { lat: 54.9863511, lng: -1.5752196 } }, (results, status) => {
+    geocoder.geocode({ location: locationObject }, (results, status) => {
       if (status === 'OK') {
         // Resolve with correct result
         resolve(results[0].formatted_address);
