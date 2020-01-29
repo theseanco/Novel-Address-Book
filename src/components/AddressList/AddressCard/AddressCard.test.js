@@ -1,5 +1,5 @@
 import React from 'react';
-import { render, getByText, waitForNextUpdate, wait } from '@testing-library/react';
+import { render, getByText, wait } from '@testing-library/react';
 import AddressCard from './AddressCard';
 import * as reverseGeocoding from '../../../utilities/reverseGeocode';
 import { act } from 'react-dom/test-utils';
