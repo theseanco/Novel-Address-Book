@@ -1,0 +1,51 @@
+@import "./variables.scss";
+
+// Used to set rem and em for sizing: see https://css-tricks.com/rems-ems/
+html {
+  font-size: 15px;
+
+  body {
+    background-color: $black;
+    margin: 0px;
+    padding: 0px 2rem;
+
+    #root {
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+
+    main {
+      background-color: $black;
+      flex: 1;
+      padding: 0px 1rem;
+
+      hr {
+        background-color: $brown;
+      }
+    }
+
+    header {
+      @include header-footer-properties;
+      border-bottom: 1px solid $dark;
+
+      h1 {
+        color: $headerfooter;
+        margin: 1rem;
+      }
+    }
+
+    footer {
+      @include header-footer-properties;
+      border-top : 1px solid $dark;
+
+      h4 {
+        color: $headerfooter;
+        margin: 1rem;
+      }
+    }
+  }
+}
+
+
+

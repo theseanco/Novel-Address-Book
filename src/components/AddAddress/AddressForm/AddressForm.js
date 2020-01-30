@@ -1,6 +1,7 @@
 import React, { useState } from "react";
-import GeolocationForm from '../GeolocationForm/GeolocationForm';
+import GeolocationForm from './GeolocationField/GeolocationField';
 import addAddressToDB from '../../../utilities/addAddressToDB';
+import './AddressForm.scss';
 
 const AddressForm = ({ setFetching }) => {
   const [name, setName] = useState("");
@@ -49,35 +50,33 @@ const AddressForm = ({ setFetching }) => {
   }
 
   return (
-    <form onSubmit={handleSubmit}>
-      {
-        errorType === 'connection' ? <p>Error submitting form...</p> : null
-      }
-      {
-        errorType === 'form' ? <p>Please fill in all details</p> : null
-      }
-      <label>
-        Name:
+    <div className="address-form">
+      <form onSubmit={handleSubmit}>
+        <legend>Add Address:</legend>
+        <hr />
+        {
+          errorType === 'connection' ? <p>Error submitting form...</p> : null
+        }
+        {
+          errorType === 'form' ? <p>Please fill in all details</p> : null
+        }
+        <label>Name:</label>
         <input
           type="text"
           value={name}
           onChange={e => setName(e.target.value)}
         />
-      </label>
-      <label>
-        Notes (optional):
+        <label>Notes (optional)</label>
         <input
           type="text"
           value={notes}
           onChange={e => setNotes(e.target.value)}
         />
-      </label>
-      <label>
-        Address:
+        <label>Address</label>
         <GeolocationForm setLocationHook={setCoordinates} setAddressHook={setAddress} address={address}/>
-      </label>
-      <input type="submit" value="Submit" />
-    </form>
+        <input className="submit-button" type="submit" value="Submit" />
+      </form>
+    </div>
   );
 }
 

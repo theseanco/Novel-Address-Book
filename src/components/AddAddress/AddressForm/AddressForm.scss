@@ -1,0 +1,35 @@
+@import "../../../variables.scss";
+
+.address-form {
+  @include card-edges;
+
+  background-color: $dark;
+
+  form {
+    display: flex;
+    flex-direction: column;
+
+    legend {
+      margin-bottom: 1.5rem;
+      font-size: 1.5rem;
+      font-weight: 200;
+    }
+
+    label {
+      color: white;
+    }
+
+    ul {
+      margin: 0;
+
+      li {
+        list-style-type: none;
+        margin-bottom: 0;
+      }
+    }
+
+    .submit-button {
+      margin-top: 2rem;
+    }
+  }
+}

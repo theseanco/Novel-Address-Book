@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import reverseGeocoding from '../../../utilities/reverseGeocode';
 import PropTypes from 'prop-types';
+import './AddressCard.scss';
 
 // TODO: integrate mapping API here
 // Destructuring props on input
@@ -20,10 +21,11 @@ const AddressCard = ({ name, notes, location }) => {
   }, [location]);
 
   return (
-    <div>
-      <h3>{name}</h3>
-      <p>{notes}</p>
-      <p>{address}</p>
+    <div className="address-card">
+      <h3>Name: {name}</h3>
+      <hr></hr>
+      <p>Notes: {notes}</p>
+      <p>Address: {address}</p>
     </div>
   )
 }

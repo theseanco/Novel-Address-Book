@@ -1,0 +1,12 @@
+@import "../../../variables.scss";
+
+.address-card {
+  @include card-edges;
+
+  background-color: $red;
+  color: $white;
+  
+  p {
+    margin-bottom: 1rem;
+  }
+}

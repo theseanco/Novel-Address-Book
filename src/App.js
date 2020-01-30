@@ -3,6 +3,7 @@ import Footer from './components/Footer/Footer';
 import Header from './components/Header/Header';
 import AddressList from './components/AddressList/AddressList';
 import AddressForm from './components/AddAddress/AddressForm/AddressForm';
+import './App.scss'
 
 function App() {
   // State for the app that is used to set whether fetching should be performed or not, a boolean
@@ -16,8 +17,11 @@ function App() {
   return (
     <>
       <Header />
-      <AddressList fetching={fetching} setFetching={setFetching}/>
-      <AddressForm setFetching={setFetching} />
+      <main>
+        <AddressList fetching={fetching} setFetching={setFetching}/>
+        <hr />
+        <AddressForm setFetching={setFetching} />
+      </main>
       <Footer />
     </>
   );

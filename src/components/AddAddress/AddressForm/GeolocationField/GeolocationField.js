@@ -27,7 +27,7 @@ const PlaceLookup = ({setLocationHook, setAddressHook, address}) => {
   };
 
   return (
-    <div>
+    <>
       <PlacesAutocomplete
         value={address}
         onChange={setAddressHook}
@@ -35,7 +35,7 @@ const PlaceLookup = ({setLocationHook, setAddressHook, address}) => {
       >
         {({ getInputProps, suggestions, getSuggestionItemProps, loading }) => (
           <>
-            <input {...getInputProps({ placeholder: "Type address" })} />
+            <input {...getInputProps({ placeholder: "Start typing address..." })} />
             <ul>
               {loading ? <div>...loading</div> : null}
 
@@ -54,7 +54,7 @@ const PlaceLookup = ({setLocationHook, setAddressHook, address}) => {
           </>
         )}
       </PlacesAutocomplete>
-    </div>
+    </>
   );
 }
 
