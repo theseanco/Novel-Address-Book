@@ -1,11 +1,11 @@
 // css variables
 // Colours generated using https://coolors.co/ffe74c-ff5964-ffffff-6bf178-35a7ff
 :root {
-  --primary: #FFE74C;
-  --secondary: #FF5964;
-  --background: #FFFFFF;
-  --green: #6BF178;
-  --blue: #35A7FF;
+  --dark: #494E6B;
+  --brown: #98878F;
+  --red: #985E6D;
+  --black: #192231;
+  --white: #ffebcd;
 }
 
 // variable for padding
@@ -13,31 +13,41 @@ $masterPadding: 0px 1rem;
 
 // Used to set rem and em for sizing: see https://css-tricks.com/rems-ems/
 html {
+
   font-size: 15px;
+
+  body {
+    background-color: var(--black);
+    margin: 0px;
+    padding: 0px 2rem;
+
+    #root {
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+
+    main {
+      background-color: var(--black);
+      flex: 1;
+      padding: $masterPadding;
+    }
+
+    header {
+      border-bottom: 1px solid var(--dark);
+    }
+
+    footer {
+      border-top : 1px solid var(--dark);
+    }
+
+    header, footer {
+      background-color: var(--black);
+      padding-top: 2rem;
+      padding: $masterPadding;
+    }
+  }
 }
 
-body {
-  margin: 0px;
-}
 
-#root {
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh;
-}
 
-main {
-  flex: 1;
-  padding: $masterPadding;
-}
-
-header, footer {
-  background-color: var(--secondary);
-  padding: $masterPadding;
-}
-
-/*
-footer {
-  background-color: var(--primary);
-}
-*/
