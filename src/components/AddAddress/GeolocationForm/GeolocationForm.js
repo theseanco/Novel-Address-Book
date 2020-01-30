@@ -15,15 +15,14 @@ import PlacesAutocomplete, {
   getLatLng
 } from "react-places-autocomplete";
 
-const PlaceLookup = ({ setLocationHook }) => {
-  const [address, setAddress] = useState('')
-
+// Both the setAddress and address hook come from parent component
+const PlaceLookup = ({setLocationHook, setAddressHook, address}) => {
   // On submission of address, write the completed address to form input
   // Pass geolocation co-ordinates to form component
   const handleSelect = async value => {
     const results = await geocodeByAddress(value);
     const latLng = await getLatLng(results[0]);
-    setAddress(value);
+    setAddressHook(value);
     setLocationHook(latLng);
   };
 
@@ -31,7 +30,7 @@ const PlaceLookup = ({ setLocationHook }) => {
     <div>
       <PlacesAutocomplete
         value={address}
-        onChange={setAddress}
+        onChange={setAddressHook}
         onSelect={handleSelect}
       >
         {({ getInputProps, suggestions, getSuggestionItemProps, loading }) => (
