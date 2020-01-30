@@ -6,6 +6,7 @@
   --red: #985E6D;
   --black: #192231;
   --white: #ffebcd;
+  --headerfooter: #FFFFFF;
 }
 
 // variable for padding
@@ -13,7 +14,6 @@ $masterPadding: 0px 1rem;
 
 // Used to set rem and em for sizing: see https://css-tricks.com/rems-ems/
 html {
-
   font-size: 15px;
 
   body {
@@ -35,10 +35,20 @@ html {
 
     header {
       border-bottom: 1px solid var(--dark);
+
+      h1 {
+        color: var(--headerfooter);
+        margin: 1rem;
+      }
     }
 
     footer {
       border-top : 1px solid var(--dark);
+
+      h4 {
+        color: var(--headerfooter);
+        margin: 1rem;
+      }
     }
 
     header, footer {
