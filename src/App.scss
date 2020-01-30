@@ -1,0 +1,43 @@
+// css variables
+// Colours generated using https://coolors.co/ffe74c-ff5964-ffffff-6bf178-35a7ff
+:root {
+  --primary: #FFE74C;
+  --secondary: #FF5964;
+  --background: #FFFFFF;
+  --green: #6BF178;
+  --blue: #35A7FF;
+}
+
+// variable for padding
+$masterPadding: 0px 1rem;
+
+// Used to set rem and em for sizing: see https://css-tricks.com/rems-ems/
+html {
+  font-size: 15px;
+}
+
+body {
+  margin: 0px;
+}
+
+#root {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+main {
+  flex: 1;
+  padding: $masterPadding;
+}
+
+header, footer {
+  background-color: var(--secondary);
+  padding: $masterPadding;
+}
+
+/*
+footer {
+  background-color: var(--primary);
+}
+*/
