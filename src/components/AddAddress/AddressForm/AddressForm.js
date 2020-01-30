@@ -1,21 +1,59 @@
 import React, { useState } from "react";
 import GeolocationForm from '../GeolocationForm/GeolocationForm';
+import addAddressToDB from '../../../utilities/addAddressToDB';
 
 const AddressForm = (props) => {
   const [name, setName] = useState("");
   const [notes, setNotes] = useState("");
+  // Components derived from gecoding component
   const [coordinates, setCoordinates] = useState({
     lat: null,
     lng: null
   });
-  
-  const handleSubmit = (e) => {
+  // Address passed to geocoding component, allowing for reset on submit
+  const [address, setAddress] = useState('');
+  // See if there is an error submitting
+  const [errorType, setErrorType] = useState('');
+
+  const handleSubmit = async (e) => {
       e.preventDefault();
-      alert(`Submitting Name ${name}`)
+      // add the available data to the database
+
+      // If there is no name and no co-ords, prevent submission to backend
+      if (
+        name === '' ||
+        coordinates.lat === null ||
+        coordinates.lng === null
+      ) {
+        setErrorType('form');
+        return;
+      }
+      try {
+
+        await addAddressToDB(name, notes, coordinates);
+        // reset state
+        setName('');
+        setNotes('');
+        setCoordinates({
+          lat: null,
+          lng: null
+        });
+        setAddress('');
+        // Set form error to false in the case of a repeat submission
+        setErrorType('');
+      } catch {
+        setErrorType('connection');
+      }
   }
 
   return (
     <form onSubmit={handleSubmit}>
+      {
+        errorType === 'connection' ? <p>Error submitting form...</p> : null
+      }
+      {
+        errorType === 'form' ? <p>Please fill in all details</p> : null
+      }
       <label>
         Name:
         <input
@@ -25,7 +63,7 @@ const AddressForm = (props) => {
         />
       </label>
       <label>
-        Notes:
+        Notes (optional):
         <input
           type="text"
           value={notes}
@@ -34,7 +72,7 @@ const AddressForm = (props) => {
       </label>
       <label>
         Address:
-        <GeolocationForm setLocationHook={setCoordinates}/>
+        <GeolocationForm setLocationHook={setCoordinates} setAddressHook={setAddress} address={address}/>
       </label>
       <input type="submit" value="Submit" />
     </form>

@@ -38,9 +38,10 @@ export const AddressList = () => {
   return (
     <>
       {
-        addresses.map((data, i) => (
+        // Map uses data.id for key as it will be unique
+        addresses.map((data) => (
           <AddressCard 
-            key={i} 
+            key={data.id} 
             name={data.name} 
             notes={data.notes} 
             location={data.location} 
