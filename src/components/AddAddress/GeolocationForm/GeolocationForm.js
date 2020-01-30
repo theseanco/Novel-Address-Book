@@ -9,7 +9,7 @@ TODO: testing render props
 
 */
 
-import React, { useState } from "react";
+import React from "react";
 import PlacesAutocomplete, {
   geocodeByAddress,
   getLatLng
