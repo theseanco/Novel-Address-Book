@@ -6,45 +6,34 @@ A component which fetches address data TODO, and renders it using the Address Ca
 
 import React, { useEffect, useState } from 'react';
 import AddressCard from './AddressCard/AddressCard'
-
-export const getAddresses = () => (
-  [
-      {
-        name: "John Doe",
-        notes: "friend from school",
-        location: {
-          latitude: 54.9863511,
-          longitude: -1.5752196
-        }
-      },
-      {
-        name: "Alex NotDoe",
-        notes: "Good at programming",
-        location: {
-          latitude: 54.9863511,
-          longitude: -1.5752196
-        }
-      },
-      {
-        name: "Jane Maine",
-        notes: "Probably A Lorem Ipsum Or Something",
-        location: {
-          latitude: 54.9863511,
-          longitude: -1.5752196
-        }
-      }
-    ]
-);
+import fetchAddressList from '../../utilities/fetchAddresses';
 
 export const AddressList = () => {
 
+  // Setting initial states
   const [addresses, setAddresses] = useState([]);
+  const [isDBError, setisDBError] = useState(false);
+  const [isLoaded, setIsLoaded] = useState(false)
   // This will be replaced with a function
   useEffect(() => {
-    const data = getAddresses();
-    setAddresses(data);
+    // Wrapper function around axois fetchAddresses, linking it up with local state.
+    const writeAddressesToState = async () => {
+      try {
+        const result = await fetchAddressList();
+        // Set that we have addresses, as well as loaded condition
+        setIsLoaded(true);
+        setAddresses(result);
+      } catch (error) {
+        setisDBError(true);
+      }
+    }
+    writeAddressesToState();
   }, [])
 
+  // If fetch failed in useEffect
+  if (isDBError) return <div><p>Error!</p></div>
+  // if we haven't loaded yet
+  if (!isLoaded) return <div><p>Loading addresses...</p></div>
 
   return (
     <>
