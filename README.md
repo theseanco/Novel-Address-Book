@@ -1,5 +1,14 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+Uses:
+- Sass
+- React Hooks
+- Simple json server
+- Heroku
+- Typography JS
+- Jest & react-testing-library
+
+
 ## Available Scripts
 
 In the project directory, you can run:
