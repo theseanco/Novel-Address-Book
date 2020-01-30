@@ -17,12 +17,16 @@ $black: #192231;
 $white: #ffebcd;
 $headerfooter: #FFFFFF;
 
-// variable for padding
-$masterPadding: 0px 1rem;
-
 // Mixin for padding and border-radius for cards
 @mixin card-edges {
   border-radius: 1rem;
   margin: 1rem 0px;
   padding: 1rem;
+}
+
+// mixin for header and footer padding
+@mixin header-footer-properties {
+  background-color: $black;
+  padding-top: 2rem;
+  padding: 0px 1rem;
 }

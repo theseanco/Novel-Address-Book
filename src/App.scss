@@ -18,10 +18,15 @@ html {
     main {
       background-color: $black;
       flex: 1;
-      padding: $masterPadding;
+      padding: 0px 1rem;
+
+      hr {
+        background-color: $brown;
+      }
     }
 
     header {
+      @include header-footer-properties;
       border-bottom: 1px solid $dark;
 
       h1 {
@@ -31,18 +36,13 @@ html {
     }
 
     footer {
+      @include header-footer-properties;
       border-top : 1px solid $dark;
 
       h4 {
         color: $headerfooter;
         margin: 1rem;
       }
-    }
-
-    header, footer {
-      background-color: $black;
-      padding-top: 2rem;
-      padding: $masterPadding;
     }
   }
 }

@@ -19,6 +19,7 @@ function App() {
       <Header />
       <main>
         <AddressList fetching={fetching} setFetching={setFetching}/>
+        <hr />
         <AddressForm setFetching={setFetching} />
       </main>
       <Footer />
