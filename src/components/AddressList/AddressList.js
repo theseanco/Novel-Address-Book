@@ -7,6 +7,7 @@ A component which fetches address data TODO, and renders it using the Address Ca
 import React, { useEffect, useState } from 'react';
 import AddressCard from './AddressCard/AddressCard'
 import fetchAddressList from '../../utilities/fetchAddresses';
+import './AddressList.scss';
 
 export const AddressList = ({ setFetching, fetching}) => {
 
@@ -40,7 +41,7 @@ export const AddressList = ({ setFetching, fetching}) => {
   if (!isLoaded) return <div><p>Loading addresses...</p></div>
 
   return (
-    <>
+    <div className="address-list">
       {
         // Map uses data.id for key as it will be unique
         addresses.map((data) => (
@@ -52,7 +53,7 @@ export const AddressList = ({ setFetching, fetching}) => {
           />
         ))
       }
-    </>
+    </div>
   )
 }
 

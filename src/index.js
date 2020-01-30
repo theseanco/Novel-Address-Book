@@ -2,6 +2,12 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
+import Typography from 'typography';
+import moragaTheme from 'typography-theme-moraga';
+moragaTheme.baseFontSize = '15px'; // was 20px.
+
+const typography = new Typography(moragaTheme)
+typography.injectStyles();
 
 ReactDOM.render(<App />, document.getElementById('root'));
 

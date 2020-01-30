@@ -13,7 +13,7 @@ const Header = () => {
 
   return (
     <footer data-testid="footer">
-      <h5>Sean Cotterill, {date}</h5>
+      <h4>Sean Cotterill, {date}</h4>
     </footer>
   )
 }
