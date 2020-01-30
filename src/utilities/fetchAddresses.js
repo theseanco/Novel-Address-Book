@@ -8,8 +8,8 @@ const fetchAddressList = async () => {
     const { data } = await axios.get('https://novel-address-book-backend.herokuapp.com/addresses')
     return data;
   } catch (error) {
-    // Catch and return error, for handling in component
-    return error;
+    // throw error back to calling component
+    throw error;
   }
 }
 
