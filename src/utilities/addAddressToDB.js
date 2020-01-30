@@ -14,7 +14,7 @@ const postToDB = async (name, notes, location) => {
     })
     return post;
   } catch (error) {
-    return error;
+    throw error;
   }
 }
 

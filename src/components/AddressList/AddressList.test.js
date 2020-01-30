@@ -63,10 +63,6 @@ describe('AddressList tests', () => {
     })
   })
 
-  /*
-
-  TODO: This currently doesn't error correctly. Unsure why.
-
   it('should show error text when fetch fails', async () => {
     fetchAddresses.default = jest.fn(() => {
       throw new Error();
@@ -78,5 +74,4 @@ describe('AddressList tests', () => {
       })
     })
   })
-  */
 });
