@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import GeolocationForm from '../GeolocationForm/GeolocationForm';
 import addAddressToDB from '../../../utilities/addAddressToDB';
 
-const AddressForm = (props) => {
+const AddressForm = ({ setFetching }) => {
   const [name, setName] = useState("");
   const [notes, setNotes] = useState("");
   // Components derived from gecoding component
@@ -41,6 +41,8 @@ const AddressForm = (props) => {
         setAddress('');
         // Set form error to false in the case of a repeat submission
         setErrorType('');
+        // Set app fetching to true, to trigger a re-render of addresslist component
+        setFetching(true);
       } catch (error) {
         setErrorType('connection');
       }

@@ -8,7 +8,7 @@ import React, { useEffect, useState } from 'react';
 import AddressCard from './AddressCard/AddressCard'
 import fetchAddressList from '../../utilities/fetchAddresses';
 
-export const AddressList = () => {
+export const AddressList = ({ setFetching, fetching}) => {
 
   // Setting initial states
   const [addresses, setAddresses] = useState([]);
@@ -16,19 +16,23 @@ export const AddressList = () => {
   const [isLoaded, setIsLoaded] = useState(false)
   // This will be replaced with a function
   useEffect(() => {
-    // Wrapper function around axois fetchAddresses, linking it up with local state.
-    const writeAddressesToState = async () => {
-      try {
-        const result = await fetchAddressList();
-        // Set that we have addresses, as well as loaded condition
-        setIsLoaded(true);
-        setAddresses(result);
-      } catch (error) {
-        setisDBError(true);
+    if (fetching) {
+      // Wrapper function around axois fetchAddresses, linking it up with local state.
+      const writeAddressesToState = async () => {
+        try {
+          const result = await fetchAddressList();
+          // Set that we have addresses, as well as loaded condition
+          setIsLoaded(true);
+          setAddresses(result);
+        } catch (error) {
+          setisDBError(true);
+        }
       }
+      writeAddressesToState();
+      // Set fetching to false to prevent re-fetching
+      setFetching(false);
     }
-    writeAddressesToState();
-  }, [])
+  }, [fetching, setFetching])
 
   // If fetch failed in useEffect
   if (isDBError) return <div><p>Error!</p></div>
