@@ -18,7 +18,6 @@ const AddressForm = (props) => {
   const handleSubmit = async (e) => {
       e.preventDefault();
       // add the available data to the database
-
       // If there is no name and no co-ords, prevent submission to backend
       if (
         name === '' ||
@@ -28,8 +27,9 @@ const AddressForm = (props) => {
         setErrorType('form');
         return;
       }
-      try {
 
+      // if validation successful, try to submit to backend, if not then reject
+      try {
         await addAddressToDB(name, notes, coordinates);
         // reset state
         setName('');
@@ -41,7 +41,7 @@ const AddressForm = (props) => {
         setAddress('');
         // Set form error to false in the case of a repeat submission
         setErrorType('');
-      } catch {
+      } catch (error) {
         setErrorType('connection');
       }
   }

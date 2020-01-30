@@ -7,14 +7,14 @@ const postToDB = async (name, notes, location) => {
     longitude: location.lng
   };
   try {
-   const post = await axios.post('https://novel-address-book-backend.herokuapp.com/addresses', {
+   const post = await axios.post('https://novel-udaddress-book-backend.herokuapp.com/addresses', {
       name,
       notes,
       location: processedLocation
     })
     return post;
   } catch (error) {
-    return error;
+    throw error;
   }
 }
 
