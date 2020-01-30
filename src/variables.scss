@@ -1,0 +1,28 @@
+// css variables
+// Colours generated using https://coolors.co/ffe74c-ff5964-ffffff-6bf178-35a7ff
+:root {
+  --dark: #494E6B;
+  --brown: #98878F;
+  --red: #985E6D;
+  --black: #192231;
+  --white: #ffebcd;
+  --headerfooter: #FFFFFF;
+}
+
+//colors
+$dark: #494E6B;
+$brown: #98878F;
+$red: #985E6D;
+$black: #192231;
+$white: #ffebcd;
+$headerfooter: #FFFFFF;
+
+// variable for padding
+$masterPadding: 0px 1rem;
+
+// Mixin for padding and border-radius for cards
+@mixin card-edges {
+  border-radius: 1rem;
+  margin: 1rem 0px;
+  padding: 1rem;
+}

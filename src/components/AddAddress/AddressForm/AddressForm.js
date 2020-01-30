@@ -1,6 +1,7 @@
 import React, { useState } from "react";
-import GeolocationForm from '../GeolocationForm/GeolocationForm';
+import GeolocationForm from './GeolocationField/GeolocationField';
 import addAddressToDB from '../../../utilities/addAddressToDB';
+import './AddressForm.scss';
 
 const AddressForm = ({ setFetching }) => {
   const [name, setName] = useState("");
@@ -49,35 +50,37 @@ const AddressForm = ({ setFetching }) => {
   }
 
   return (
-    <form onSubmit={handleSubmit}>
-      {
-        errorType === 'connection' ? <p>Error submitting form...</p> : null
-      }
-      {
-        errorType === 'form' ? <p>Please fill in all details</p> : null
-      }
-      <label>
-        Name:
-        <input
-          type="text"
-          value={name}
-          onChange={e => setName(e.target.value)}
-        />
-      </label>
-      <label>
-        Notes (optional):
-        <input
-          type="text"
-          value={notes}
-          onChange={e => setNotes(e.target.value)}
-        />
-      </label>
-      <label>
-        Address:
-        <GeolocationForm setLocationHook={setCoordinates} setAddressHook={setAddress} address={address}/>
-      </label>
-      <input type="submit" value="Submit" />
-    </form>
+    <div className="address-form">
+      <form onSubmit={handleSubmit}>
+        {
+          errorType === 'connection' ? <p>Error submitting form...</p> : null
+        }
+        {
+          errorType === 'form' ? <p>Please fill in all details</p> : null
+        }
+        <label>
+          Name:
+          <input
+            type="text"
+            value={name}
+            onChange={e => setName(e.target.value)}
+          />
+        </label>
+        <label>
+          Notes (optional):
+          <input
+            type="text"
+            value={notes}
+            onChange={e => setNotes(e.target.value)}
+          />
+        </label>
+        <label>
+          Address:
+          <GeolocationForm setLocationHook={setCoordinates} setAddressHook={setAddress} address={address}/>
+        </label>
+        <input type="submit" value="Submit" />
+      </form>
+    </div>
   );
 }
 

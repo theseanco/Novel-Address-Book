@@ -1,0 +1,7 @@
+@import "../../../variables.scss";
+
+.address-form {
+  @include card-edges;
+
+  background-color: $dark;
+}

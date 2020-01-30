@@ -1,23 +1,11 @@
-// css variables
-// Colours generated using https://coolors.co/ffe74c-ff5964-ffffff-6bf178-35a7ff
-:root {
-  --dark: #494E6B;
-  --brown: #98878F;
-  --red: #985E6D;
-  --black: #192231;
-  --white: #ffebcd;
-  --headerfooter: #FFFFFF;
-}
-
-// variable for padding
-$masterPadding: 0px 1rem;
+@import "./variables.scss";
 
 // Used to set rem and em for sizing: see https://css-tricks.com/rems-ems/
 html {
   font-size: 15px;
 
   body {
-    background-color: var(--black);
+    background-color: $black;
     margin: 0px;
     padding: 0px 2rem;
 
@@ -28,31 +16,31 @@ html {
     }
 
     main {
-      background-color: var(--black);
+      background-color: $black;
       flex: 1;
       padding: $masterPadding;
     }
 
     header {
-      border-bottom: 1px solid var(--dark);
+      border-bottom: 1px solid $dark;
 
       h1 {
-        color: var(--headerfooter);
+        color: $headerfooter;
         margin: 1rem;
       }
     }
 
     footer {
-      border-top : 1px solid var(--dark);
+      border-top : 1px solid $dark;
 
       h4 {
-        color: var(--headerfooter);
+        color: $headerfooter;
         margin: 1rem;
       }
     }
 
     header, footer {
-      background-color: var(--black);
+      background-color: $black;
       padding-top: 2rem;
       padding: $masterPadding;
     }
