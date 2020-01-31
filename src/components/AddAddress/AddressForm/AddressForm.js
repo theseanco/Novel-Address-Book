@@ -60,19 +60,21 @@ const AddressForm = ({ setFetching }) => {
         {
           errorType === 'form' ? <p>Please fill in all details</p> : null
         }
-        <label>Name:</label>
+        <label htmlFor="name" >Name:</label>
         <input
           type="text"
+          id="name"
           value={name}
           onChange={e => setName(e.target.value)}
         />
-        <label>Notes (optional)</label>
+        <label htmlFor="notes">Notes (optional)</label>
         <input
           type="text"
+          id="notes"
           value={notes}
           onChange={e => setNotes(e.target.value)}
         />
-        <label>Address</label>
+        <label htmlFor="address">Address</label>
         <GeolocationForm setLocationHook={setCoordinates} setAddressHook={setAddress} address={address}/>
         <input className="submit-button" type="submit" value="Submit" />
       </form>

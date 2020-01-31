@@ -35,7 +35,7 @@ const PlaceLookup = ({setLocationHook, setAddressHook, address}) => {
       >
         {({ getInputProps, suggestions, getSuggestionItemProps, loading }) => (
           <>
-            <input {...getInputProps({ placeholder: "Start typing address..." })} />
+            <input {...getInputProps({ placeholder: "Start typing address..." })} id="address"/>
             <ul>
               {loading ? <div>...loading</div> : null}
 
