@@ -36,7 +36,6 @@ describe('AddressForm tests', () => {
       await act(async() => {
         const { container } = render(<AddressForm />)
         const input = getByLabelText(container, /Name/);
-        fireEvent.change(input, { target: { value: 'Sean' } } );
         fireEvent.click(getByText(container, 'Submit'));
         await wait(() => {
           expect(getByText(container, /Please fill in/)).toBeInTheDocument();
