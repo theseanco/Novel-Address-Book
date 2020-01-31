@@ -17,6 +17,21 @@ describe('AddressList tests', () => {
     })
   })
 
+  it('should trigger the state change post-fetch', async () => {
+    // Make sure the function returns
+    fetchAddresses.default = jest.fn(() => []);
+    // Make a fake hook to check it was executed
+    const fakeHook = jest.fn()
+    await act(async () => {
+      render(<AddressList fetching={true} setFetching={fakeHook} />);
+      // Wait for the hook to be called (in the app this is passed back to app root)
+      await wait(() => {
+        expect(fakeHook).toBeCalledTimes(1);
+        expect(fakeHook).toBeCalledWith(false);
+      })
+    })
+  })
+
   it('should show error text when fetch fails', async () => {
     fetchAddresses.default = jest.fn(() => {
       throw new Error();
