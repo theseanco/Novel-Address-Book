@@ -8,6 +8,17 @@
   form {
     display: flex;
     flex-direction: column;
+    
+    & > hr {
+      margin-bottom: 0.5rem;
+    }
+
+    & > p {
+      color: red;
+      font-size: 1.2rem;
+      font-weight: 500;
+      margin-bottom: 0px;
+    }
 
     legend {
       margin-bottom: 1.5rem;
