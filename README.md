@@ -25,6 +25,8 @@ For a local installation, clone the repo and run `yarn` to install packages, the
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+As deleting entries was not part of the spec I haven't added it, but it can be done by sending a DELETE request to `https://novel-address-book-backend.herokuapp.com/addresses/:id`. IDs can be found by looking at the database.
+
 ## File structure
 
 - The root of the project contains the App and index.js, which are mostly display components
@@ -66,4 +68,5 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 - The app fetches a complete database and cross-references all latitude and longitude co-ordinates on every addition. This has tripped the limiters on the Google Geocoding API more than once. This would probably be solved by using a proper paid-for Google Geocoding API key, _or_:
   - Use a redux instance to load the initial database into, and push changes into there, preventing the need for fetching the entire address book each time using the google API. This would have the drawback of requiring a bunch more code, as well as the database itself no longer being the source of truth for the app: if others were to use it at the same time as you, you wouldn't get their results until refresh. This is overkill for a prototype.
   - Memoize addresses once geolocated to prevent multiple API calls to retrieve the same address each time.
- - Add a linter & prettier for code style enforcement
+- Add a linter & prettier for code style enforcement
+- Deleting records can fairly easily be added using the ID supplied from database calls
