@@ -36,9 +36,9 @@ export const AddressList = ({ setFetching, fetching}) => {
   }, [fetching, setFetching])
 
   // If fetch failed in useEffect
-  if (isDBError) return <div><p>Error!</p></div>
+  if (isDBError) return <div className="list-error-text"><p>Error fetching addresses!</p></div>
   // if we haven't loaded yet
-  if (!isLoaded) return <div><p>Loading addresses...</p></div>
+  if (!isLoaded) return <div className="list-loading-text"><p>Loading addresses...</p></div>
 
   return (
     <div className="address-list">

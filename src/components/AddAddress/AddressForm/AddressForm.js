@@ -55,7 +55,7 @@ const AddressForm = ({ setFetching }) => {
         <legend>Add Address:</legend>
         <hr />
         {
-          errorType === 'connection' ? <p>Error submitting form...</p> : null
+          errorType === 'connection' ? <p>Error submitting form, please try again</p> : null
         }
         {
           errorType === 'form' ? <p>Please fill in all details</p> : null

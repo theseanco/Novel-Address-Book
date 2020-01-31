@@ -5,7 +5,7 @@ import axios from "axios";
 const fetchAddressList = async () => {
   try {
     // return data from axios request if we can get it
-    const { data } = await axios.get('https://novel-address-book-backend.herokuapp.com/addresses')
+    const { data } = await axios.get('https://novel-address-book-backend.herokuapp.com/addresses');
     return data;
   } catch (error) {
     // throw error back to calling component
