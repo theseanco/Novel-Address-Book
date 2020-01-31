@@ -35,7 +35,6 @@ describe('AddressForm tests', () => {
       addAddressToDB.default = jest.fn(() => []) 
       await act(async() => {
         const { container } = render(<AddressForm />)
-        const input = getByLabelText(container, /Name/);
         fireEvent.click(getByText(container, 'Submit'));
         await wait(() => {
           expect(getByText(container, /Please fill in/)).toBeInTheDocument();
