@@ -66,3 +66,4 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 - The app fetches a complete database and cross-references all latitude and longitude co-ordinates on every addition. This has tripped the limiters on the Google Geocoding API more than once. This would probably be solved by using a proper paid-for Google Geocoding API key, _or_:
   - Use a redux instance to load the initial database into, and push changes into there, preventing the need for fetching the entire address book each time using the google API. This would have the drawback of requiring a bunch more code, as well as the database itself no longer being the source of truth for the app: if others were to use it at the same time as you, you wouldn't get their results until refresh. This is overkill for a prototype.
   - Memoize addresses once geolocated to prevent multiple API calls to retrieve the same address each time.
+ - Add a linter & prettier for code style enforcement
