@@ -1,77 +1,68 @@
+# Novel Address Book App
+
+## About
+
+This app is a simple address book. You can use it to add to a list of addresses. The list of addresses is on a server and will persist between sessions.
+
+For each entry in the list, you need:
+- Name
+- Notes (optional)
+- Address
+
+The address bar will perform a google maps autocomplete lookup based on what you type, you can select an address from the provided list.
+
+Once submitted, the app will convert the addresses to lat/long co-ordinates and store them in a database. The app will then add the new address to the list.
+
+Please go easy on this app! - I only have free API keys and a database hosted on Heroku!
+
+## Using the app
+
+This app can be used at ADD URL ONCE DEPLOYED
+
+The database can be viewed [here](https://novel-address-book-backend.herokuapp.com/addresses).
+
+For a local installation, clone the repo and run `yarn` to install packages, then start a local copy with `yarn start`. Tests can be run with `yarn test`.
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-Uses:
+## File structure
+
+- The root of the project contains the App and index.js, which are mostly display components
+- `src/utilities` contains utlility functions used to interact with the addresses database, as well as google geocoding functionality
+- `src/AddressList` contains `AddressList`, which renders out a set of addresses queried from the database using the `src/AddressList/AddressCard` component
+- `src/AddAddress/AddressForm` contains the form used to post addresses to the database, as well as a `GeolocationField` component built using `react-places-autocomplete`
+
+## Tech used
+
+### Frontend
+
+- React, with most stateful logic based on Hooks
+- create-react-app for OOTB Webpack config
 - Sass
-- React Hooks
-- Simple json server
-- Heroku
-- Typography JS
-- Jest & react-testing-library
+- [TypographyJS](https://kyleamathews.github.io/typography.js/) and Moraga theme
+- [Google Geocoding API](https://developers.google.com/maps/documentation/geocoding/start)
+- [react-places-autocomplete](https://github.com/hibiken/react-places-autocomplete)
 
+### Testing
 
-## Available Scripts
+- Jest
+- react-testing-library
 
-In the project directory, you can run:
+### Backend
 
-### `yarn start`
+- [json-server-heroku](https://github.com/jesperorb/json-server-heroku) deployment on Heroku
+- GitHub Pages
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+### Organisational
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+- This project was (hurriedly) ticketed using [Clickup](https://app.clickup.com/) to keep development organised.
+- Commits (apart from one i made by mistake) are handled by developing branches against Clickup ticket IDs, and opening Pull Requests against master. The branches are squashed and merged to master, with their commit messages following the [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/) specification to keep the history readable.
+- Where possible I attempted to develop using red-green-refactor TDD principles. Due to the timescale this became quite difficult, particularly for more complex UI elements.
+- Components should have unit/UI tests where possible. Some of these components that use external dependencies, particularly `react-places-autocomplete` became quite troublesome because I am not familiar with it.
+ 
+## Possible improvements
 
-### `yarn test`
-
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `yarn build`
-
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `yarn eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `yarn build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+- Root app contains state set using a string, which is used to inform `useEffect` hooks whether a fetch needs to be performed. While this is fine for an app of this scale, for greater security and less chance for error this could be made into a finite state machine using `useReducer`, but this does take a lot more code, and is probably overkill for a prototype.
+- The app fetches a complete database and cross-references all latitude and longitude co-ordinates on every addition. This has tripped the limiters on the Google Geocoding API more than once. This would probably be solved by using a proper paid-for Google Geocoding API key, _or_:
+  - Use a redux instance to load the initial database into, and push changes into there, preventing the need for fetching the entire address book each time using the google API. This would have the drawback of requiring a bunch more code, as well as the database itself no longer being the source of truth for the app: if others were to use it at the same time as you, you wouldn't get their results until refresh. This is overkill for a prototype.
+  - Memoize addresses once geolocated to prevent multiple API calls to retrieve the same address each time.
