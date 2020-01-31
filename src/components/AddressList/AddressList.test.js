@@ -1,35 +1,50 @@
 //TODO: is AddressComponentry right for this? Won't know until things are ironed out with data fetching
 
 import React from 'react';
-import { render, getByText, waitForElement, wait } from '@testing-library/react';
+import { render, getByText, wait } from '@testing-library/react';
 import AddressList from './AddressList'
 import * as fetchAddresses from '../../utilities/fetchAddresses';
 import { act } from 'react-dom/test-utils';
 
 jest.mock('../../utilities/fetchAddresses');
 
+
 describe('AddressList tests', () => {
   it('should initially display loading text', async () => {
     await act(async () => {
-      fetchAddresses.default = jest.fn(() => [])
-      const { getByText } = render(<AddressList />);
+      const { getByText } = render(<AddressList fetching={false} />);
       expect(getByText(/Loading addresses/)).toBeInTheDocument();
+    })
+  })
+
+  it('should trigger the state change post-fetch', async () => {
+    // Make sure the function returns
+    fetchAddresses.default = jest.fn(() => []);
+    // Make a fake hook to check it was executed
+    const fakeHook = jest.fn()
+    await act(async () => {
+      render(<AddressList fetching={true} setFetching={fakeHook} />);
+      // Wait for the hook to be called (in the app this is passed back to app root)
+      await wait(() => {
+        expect(fakeHook).toBeCalledTimes(1);
+        expect(fakeHook).toBeCalledWith(false);
+      })
     })
   })
 
   it('should show error text when fetch fails', async () => {
     fetchAddresses.default = jest.fn(() => {
       throw new Error();
-    })
+    });
     await act(async () => {
-      const { container } = await render(<AddressList />);
+      const { container } = await render(<AddressList fetching={true} setFetching={() => {}} />);
       await wait(() => {
         expect(getByText(container, /Error/)).toBeInTheDocument();
       })
     })
   })
 
-  it('should display error conditions on an error', async () => {
+  it('should render out the correct names when fetched from db', async () => {
     // Fake the results of fetch call, lat and long are passed down to AddressCard
     fetchAddresses.default = jest.fn(() => [
       {
@@ -51,14 +66,14 @@ describe('AddressList tests', () => {
         }
       },
     ]
-    )
+    );
     await act(async () => {
-      const { container } = render(<AddressList />);
+      const { container } = render(<AddressList fetching={ true } setFetching={ () => {} } />);
       await wait(() => {
-        expect(getByText(container, "Fake Person 1")).toBeInTheDocument();
-        expect(getByText(container, "Notes for Fake Person 1")).toBeInTheDocument();
-        expect(getByText(container, "Fake Person 2")).toBeInTheDocument();
-        expect(getByText(container, "Some other notes for Fake Person 2")).toBeInTheDocument();
+        expect(getByText(container, "Name: Fake Person 1")).toBeInTheDocument();
+        expect(getByText(container, "Notes: Notes for Fake Person 1")).toBeInTheDocument();
+        expect(getByText(container, "Name: Fake Person 2")).toBeInTheDocument();
+        expect(getByText(container, "Notes: Some other notes for Fake Person 2")).toBeInTheDocument();
       })
     })
   })
@@ -66,9 +81,9 @@ describe('AddressList tests', () => {
   it('should show error text when fetch fails', async () => {
     fetchAddresses.default = jest.fn(() => {
       throw new Error();
-    })
+    });
     await act(async () => {
-      const { container } = await render(<AddressList />);
+      const { container } = await render(<AddressList fetching={true} setFetching={ () => {} } />);
       await wait(() => {
         expect(getByText(container, /Error/)).toBeInTheDocument();
       })
