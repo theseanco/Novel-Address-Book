@@ -1,3 +1,14 @@
+/*
+
+A form for adding new addresses to the database
+
+Validation is performed to prevent submission to the database without an address or a name
+
+Two way binding is in place between the form and its' nested GeolocationField component, to keep this component simple.
+
+*/
+
+
 import React, { useState } from "react";
 import GeolocationForm from './GeolocationField/GeolocationField';
 import addAddressToDB from '../../../utilities/addAddressToDB';
@@ -13,7 +24,7 @@ const AddressForm = ({ setFetching }) => {
   });
   // Address passed to geocoding component, allowing for reset on submit
   const [address, setAddress] = useState('');
-  // See if there is an error submitting
+  // See if there is an error submitting, value of string used to set error messages
   const [errorType, setErrorType] = useState('');
 
   const handleSubmit = async (e) => {

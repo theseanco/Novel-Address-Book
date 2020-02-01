@@ -1,6 +1,12 @@
 /*
 
-A component which fetches address data TODO, and renders it using the Address Card component
+A component which fetches address data, and renders it using the addressCard component
+
+Will perform a fetch of the database on render, and when the fetching prop changes to `true`
+
+Props:
+- fetching: a state passed into the component, if it is true or changes to true a database fetch will be performed
+- setFetching: a setState hook used to set the `fetching` state to false once fetch is complete
 
 */
 
@@ -9,7 +15,7 @@ import AddressCard from './AddressCard/AddressCard'
 import fetchAddressList from '../../utilities/fetchAddresses';
 import './AddressList.scss';
 
-export const AddressList = ({ setFetching, fetching}) => {
+export const AddressList = ({ setFetching, fetching }) => {
 
   // Setting initial states
   const [addresses, setAddresses] = useState([]);

@@ -6,6 +6,7 @@ import Typography from 'typography';
 import moragaTheme from 'typography-theme-moraga';
 moragaTheme.baseFontSize = '15px'; // was 20px.
 
+// Inject typography styles into global stylesheet
 const typography = new Typography(moragaTheme)
 typography.injectStyles();
 

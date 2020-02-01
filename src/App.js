@@ -1,3 +1,12 @@
+/*
+
+Root app component that renders the page
+Contains some stateful logic for controlling database fetching described below
+
+*/
+
+
+
 import React, { useState } from 'react';
 import Footer from './components/Footer/Footer';
 import Header from './components/Header/Header';

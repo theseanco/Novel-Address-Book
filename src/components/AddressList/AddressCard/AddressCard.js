@@ -1,9 +1,17 @@
+/*
+
+AddressCard component
+
+Renders a name and notes from a database entry
+Location is reverse geocoded using a helper function and displayed as an address
+
+*/
+
 import React, { useState, useEffect } from 'react';
 import reverseGeocoding from '../../../utilities/reverseGeocode';
 import PropTypes from 'prop-types';
 import './AddressCard.scss';
 
-// TODO: integrate mapping API here
 // Destructuring props on input
 const AddressCard = ({ name, notes, location }) => {
   // Initialise address with loading state while geocoding is completed

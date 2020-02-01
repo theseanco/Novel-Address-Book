@@ -4,8 +4,9 @@ Geolocation form that performs a lookup for addresses using the Google Maps API
 
 Props:
 - setLocationHook: a setState hook for form state of this component, which geocoded components will be written to
+- setAddressHook : a setState hook for form state to be manipulated by filled address
+- address: a state value of the form this component uses
 
-TODO: testing render props
 
 */
 

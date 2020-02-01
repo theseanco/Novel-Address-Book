@@ -1,7 +1,6 @@
 /*
 
 Header component contaning app title
-TODO: Does this need to be a nav bar?
 
 */
 
