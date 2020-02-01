@@ -17,7 +17,7 @@ Please go easy on this app! - I only have free API keys and a database hosted on
 
 ## Using the app
 
-This app can be used at ADD URL ONCE DEPLOYED
+This app can be used [here](https://gallant-feynman-e624fd.netlify.com/). 
 
 The database can be viewed [here](https://novel-address-book-backend.herokuapp.com/addresses).
 
@@ -53,7 +53,10 @@ As deleting entries was not part of the spec I haven't added it, but it can be d
 ### Backend
 
 - [json-server-heroku](https://github.com/jesperorb/json-server-heroku) deployment on Heroku
-- GitHub Pages
+
+### Deployment
+
+- Netlify Webhooks
 
 ### Organisational
 
