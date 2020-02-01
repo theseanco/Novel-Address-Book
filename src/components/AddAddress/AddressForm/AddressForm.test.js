@@ -1,5 +1,12 @@
-import React, { useEffect } from 'react';
-import { render, getByLabelText, fireEvent, act, getByText, wait, getByDisplayValue } from '@testing-library/react';
+import React  from 'react';
+import { render, 
+  getByLabelText, 
+  fireEvent, 
+  act, 
+  getByText, 
+  wait, 
+  getByDisplayValue, 
+  queryByDisplayValue } from '@testing-library/react';
 import AddressForm from './AddressForm';
 import * as addAddressToDB from '../../../utilities/addAddressToDB';
 
@@ -8,7 +15,8 @@ jest.mock('../../../utilities/addAddressToDB');
 // Make a mock of the geolocation field component to test that it modifies state correctly
 jest.mock('./GeolocationField/GeolocationField', () => {
   const ComponentToMock = ({ setLocationHook, setAddressHook, address }) => {
-    const handleSubmit = () => {
+    const handleSubmit = (e) => {
+      e.preventDefault();
       setLocationHook({ lat: 60, lng: 1 });
       setAddressHook("1 London Way, London");
     }
@@ -74,23 +82,38 @@ describe('AddressForm tests', () => {
       });
     })
 
+    // A comprehensive test of the component
+    // Checks filling fields, clearing fields and submission
     it('Once all fields are filled, form can be submitted', async () => {
       addAddressToDB.default = jest.fn(() => []) 
-      await act(async() => {
         const { container } = render(<AddressForm />)
-        // Create fake address
-        fireEvent.click(getByText(container, 'Mock Autocomplete'));
         // Create fake name
         const nameInput = getByLabelText(container, /Name/);
         fireEvent.change(nameInput, { target: { value: 'Fake Name' } } );
         // Create fake optional notes
         const notesInput = getByLabelText(container, /Notes/);
-        fireEvent.change(notesInput, { target: { value: 'Some notes about Sean' } } );
+        fireEvent.change(notesInput, { target: { value: 'Fake Notes' } } );
+        // Create fake address
+        fireEvent.click(getByText(container, 'Mock Autocomplete'));
         // Cick the submit button
+        fireEvent.click(getByText(container, 'Submit'));
+        // Once clicked, the fields should be purged of text
+        // Need to use queryBy rather than getBy to assert on absence of elements
         await wait(() => {
-          expect(getByDisplayValue(container, /1 London Way/)).toBeInTheDocument();
-        })
-      });
+          expect(queryByDisplayValue(container, /1 London Way/)).not.toBeInTheDocument();
+          expect(queryByDisplayValue(container, /Fake Name/)).not.toBeInTheDocument();
+          expect(queryByDisplayValue(container, /Fake Notes/)).not.toBeInTheDocument();
+        });
+        // Check it has been called once with the right arguments
+        expect(addAddressToDB.default).toHaveBeenCalledTimes(1);
+        expect(addAddressToDB.default).toHaveBeenCalledWith(
+          'Fake Name',
+          'Fake Notes',
+          {
+            lat: 60,
+            lng: 1
+          }
+        )
     })
   })
 });
