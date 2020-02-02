@@ -29,12 +29,14 @@ const AddressCard = ({ name, notes, location }) => {
   }, [location]);
 
   return (
-    <div className="address-card">
-      <h3>Name: {name}</h3>
-      <hr></hr>
-      <p>Notes: {notes}</p>
-      <p>Address: {address}</p>
-    </div>
+    <li className="address-card">
+      <div>
+        <h3>Name: {name}</h3>
+        <hr></hr>
+        <p>Notes: {notes}</p>
+        <p>Address: {address}</p>
+      </div>
+    </li>
   )
 }
 
