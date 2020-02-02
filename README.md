@@ -32,7 +32,7 @@ As deleting entries was not part of the spec I haven't added it, but it can be d
 - The root of the project contains the App and index.js, which are mostly display components
 - `src/utilities` contains utlility functions used to interact with the addresses database, as well as google geocoding functionality
 - `src/AddressList` contains `AddressList`, which renders out a set of addresses queried from the database using the `src/AddressList/AddressCard` component
-- `src/AddAddress/AddressForm` contains the form used to post addresses to the database, as well as a `GeolocationField` component built using `react-places-autocomplete`
+- `src/AddressForm` contains the form used to post addresses to the database, as well as a `GeolocationField` component built using `react-places-autocomplete`
 
 ## Tech used
 
