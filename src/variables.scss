@@ -23,3 +23,20 @@ $basicwhite: #FFFFFF;
   padding-top: 2rem;
   padding: 0px 1rem;
 }
+
+// Responsive media queries, these will only be used once but having them avaiable is good for scaling later.
+@mixin phone {
+  @media (max-width: 599px) { @content; }
+}
+@mixin tablet-portrait {
+  @media (min-width: 600px) { @content; }
+}
+@mixin tablet-landscape {
+  @media (min-width: 900px) { @content; }
+}
+@mixin desktop {
+  @media (min-width: 1200px) { @content; }
+}
+@mixin big-desktop {
+  @media (min-width: 1800px) { @content; }
+}

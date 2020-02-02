@@ -48,6 +48,7 @@ export const AddressList = ({ setFetching, fetching }) => {
 
   return (
     <div className="address-list">
+      <ul>
       {
         // Map uses data.id for key as it will be unique
         addresses.map((data) => (
@@ -59,6 +60,7 @@ export const AddressList = ({ setFetching, fetching }) => {
           />
         ))
       }
+      </ul>
     </div>
   )
 }

@@ -8,9 +8,9 @@ import { render,
   getByDisplayValue, 
   queryByDisplayValue } from '@testing-library/react';
 import AddressForm from './AddressForm';
-import * as addAddressToDB from '../../../utilities/addAddressToDB';
+import * as addAddressToDB from '../../utilities/addAddressToDB';
 
-jest.mock('../../../utilities/addAddressToDB');
+jest.mock('../../utilities/addAddressToDB');
 
 // Make a mock of the geolocation field component to test that it modifies state correctly
 jest.mock('./GeolocationField/GeolocationField', () => {

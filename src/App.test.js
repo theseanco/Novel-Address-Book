@@ -13,4 +13,10 @@ describe('App Root tests', () => {
     // Check the form has rendered
     expect(getByText(container, /Add Address/)).toBeInTheDocument();
   })
+
+  // Snapshot test for the app component as it does not have stateful UI logic
+  it('should match snapshot', () => {
+    const { container } = render(<App />);
+    expect(container.firstChild).toMatchSnapshot();
+  })
 });
