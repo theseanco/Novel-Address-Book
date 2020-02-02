@@ -1,6 +1,6 @@
 # Novel Address Book App
 
-[![Netlify Status](https://api.netlify.com/api/v1/badges/a3252099-0cc1-49e7-95b7-0b69d3c95e82/deploy-status)](https://app.netlify.com/sites/wizardly-hermann-5d4e00/deploys)
+[![Netlify Status](https://api.netlify.com/api/v1/badges/dfe91f05-d8ab-49d3-8fc0-2c6047a008f0/deploy-status)](https://app.netlify.com/sites/gallant-feynman-e624fd/deploys)
 
 ## About
 
