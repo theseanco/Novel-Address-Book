@@ -25,6 +25,7 @@ const AddressForm = ({ setFetching }) => {
   // Address passed to geocoding component, allowing for reset on submit
   const [address, setAddress] = useState('');
   // See if there is an error submitting, value of string used to set error messages
+  // This could be more securely managed with a finite state machine using useReducer, but that's a bit extreme for a prototype
   const [errorType, setErrorType] = useState('');
 
   const handleSubmit = async (e) => {
@@ -43,7 +44,7 @@ const AddressForm = ({ setFetching }) => {
       // if validation successful, try to submit to backend, if not then reject
       try {
         await addAddressToDB(name, notes, coordinates);
-        // reset state
+        // reset form state
         setName('');
         setNotes('');
         setCoordinates({
@@ -56,6 +57,7 @@ const AddressForm = ({ setFetching }) => {
         // Set app fetching to true, to trigger a re-render of addresslist component
         setFetching(true);
       } catch (error) {
+        // Render a connection error
         setErrorType('connection');
       }
   }
