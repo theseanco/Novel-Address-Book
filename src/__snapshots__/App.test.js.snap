@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`App Root tests should match snapshot 1`] = `
+<header
+  data-testid="header"
+>
+  <h1>
+    Address Book App
+  </h1>
+</header>
+`;
