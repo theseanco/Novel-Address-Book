@@ -11,7 +11,7 @@ Two way binding is in place between the form and its' nested GeolocationField co
 
 import React, { useState } from "react";
 import GeolocationForm from './GeolocationField/GeolocationField';
-import addAddressToDB from '../../../utilities/addAddressToDB';
+import addAddressToDB from '../../utilities/addAddressToDB';
 import './AddressForm.scss';
 
 const AddressForm = ({ setFetching }) => {

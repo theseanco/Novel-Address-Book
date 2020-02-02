@@ -11,7 +11,7 @@ import React, { useState } from 'react';
 import Footer from './components/Footer/Footer';
 import Header from './components/Header/Header';
 import AddressList from './components/AddressList/AddressList';
-import AddressForm from './components/AddAddress/AddressForm/AddressForm';
+import AddressForm from './components/AddressForm/AddressForm';
 import './App.scss'
 
 function App() {
