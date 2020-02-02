@@ -73,5 +73,5 @@ As deleting entries was not part of the spec I haven't added it, but it can be d
   - Memoize addresses once geolocated to prevent multiple API calls to retrieve the same address each time.
 - Add a linter & prettier for code style enforcement
 - Deleting records can fairly easily be added using the ID supplied from database calls
-- After some testing, it appears that the Heroku server resets to its initial state after a period of inactivity.
+- After some testing, it appears that the Heroku server resets to its initial state after a period of inactivity, as Heroku instances spin down after a while and on restart the `db.json` file resets to its original empty state. This could be sorted with a proper database instance, but would require a bit of work.
 - CI pipeline preventing code submissions with failing tests
