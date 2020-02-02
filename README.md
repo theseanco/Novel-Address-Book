@@ -1,5 +1,7 @@
 # Novel Address Book App
 
+[![Netlify Status](https://api.netlify.com/api/v1/badges/a3252099-0cc1-49e7-95b7-0b69d3c95e82/deploy-status)](https://app.netlify.com/sites/wizardly-hermann-5d4e00/deploys)
+
 ## About
 
 This app is a simple address book. You can use it to add to a list of addresses. The list of addresses is on a server and will persist between sessions.
@@ -64,7 +66,8 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 ### Deployment
 
-- Netlify Webhooks
+- Netlify hosting and environment variables for API keys
+- Netlify Webhooks for automatic deployment on pushes to master
 
 ### Organisational
 
