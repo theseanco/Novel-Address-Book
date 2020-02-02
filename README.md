@@ -1,5 +1,7 @@
 # Novel Address Book App
 
+[![Netlify Status](https://api.netlify.com/api/v1/badges/a3252099-0cc1-49e7-95b7-0b69d3c95e82/deploy-status)](https://app.netlify.com/sites/wizardly-hermann-5d4e00/deploys)
+
 ## About
 
 This app is a simple address book. You can use it to add to a list of addresses. The list of addresses is on a server and will persist between sessions.
@@ -23,9 +25,17 @@ The database can be viewed [here](https://novel-address-book-backend.herokuapp.c
 
 For a local installation, clone the repo and run `yarn` to install packages, then start a local copy with `yarn start`. Tests can be run with `yarn test`.
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+To use the Google Maps API key you will need to create your own key and add it to an `.env` variable at the root of the repo following this format: 
+
+```
+REACT_APP_GOOGLE_MAPS_API=YOUR_KEY_GOES_HERE
+```
+
+There is a guide on how to create a key [here].
 
 As deleting entries was not part of the spec I haven't added it, but it can be done by sending a DELETE request to `https://novel-address-book-backend.herokuapp.com/addresses/:id`. IDs can be found by looking at the database.
+
+This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## File structure
 
@@ -56,7 +66,8 @@ As deleting entries was not part of the spec I haven't added it, but it can be d
 
 ### Deployment
 
-- Netlify Webhooks
+- Netlify hosting and environment variables for API keys
+- Netlify Webhooks for automatic deployment on pushes to master
 
 ### Organisational
 
