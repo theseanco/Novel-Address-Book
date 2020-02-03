@@ -1,3 +1,9 @@
+/*
+
+Function to fetch array of addresses from the database, takes no arguments and returns an array.
+
+*/
+
 import axios from "axios";
 
 // Use axios to fetch data from db

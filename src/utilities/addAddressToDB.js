@@ -1,3 +1,14 @@
+/*
+
+Function to add address to database
+
+params:
+name: name string
+notes: notes string
+location: LatLng object returned from google geocoding API. This will be transformed into a {latitude, longitude} object to meet database spec
+
+*/
+
 import axios from 'axios';
 
 const postToDB = async (name, notes, location) => {

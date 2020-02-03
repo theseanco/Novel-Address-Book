@@ -1,3 +1,13 @@
+/*
+
+Function using google reverse geocoding API to get a best address estimate from a latitude/longitude object
+
+params:
+locationObject: an object that can be interepreted by the google maps API: {lat: Number, lng: Number}. More information here https://developers.google.com/maps/documentation/javascript/geocoding
+
+*/
+
+
 // Wrap google geocoder in a promise to better handle async fetching
 const reverseGeocode = locationObject => {
   return new Promise((resolve, reject) => {
