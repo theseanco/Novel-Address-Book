@@ -31,7 +31,7 @@ To use the Google Maps API key you will need to create your own key and add it t
 REACT_APP_GOOGLE_MAPS_API=YOUR_KEY_GOES_HERE
 ```
 
-There is a guide on how to create a key [here].
+There is a guide on how to create a key [here](https://developers.google.com/maps/documentation/javascript/get-api-key).
 
 As deleting entries was not part of the spec I haven't added it, but it can be done by sending a DELETE request to `https://novel-address-book-backend.herokuapp.com/addresses/:id`. IDs can be found by looking at the database.
 
