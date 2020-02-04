@@ -12,4 +12,10 @@ describe('footer tests', () => {
     expect(getByText(container, /Sean Cotterill/)).toBeInTheDocument()
     expect(getByText(container, /2020/)).toBeInTheDocument()
   })
+
+  // Snapshot test for the footer component as it does not have stateful UI logic
+  it('should match snapshot', () => {
+    const { container } = render(<Footer />);
+    expect(container.firstChild).toMatchSnapshot();
+  })
 });
