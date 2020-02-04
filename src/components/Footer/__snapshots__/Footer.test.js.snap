@@ -1,0 +1,12 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`footer tests should match snapshot 1`] = `
+<footer
+  data-testid="footer"
+>
+  <h4>
+    Sean Cotterill, 
+    2020
+  </h4>
+</footer>
+`;
