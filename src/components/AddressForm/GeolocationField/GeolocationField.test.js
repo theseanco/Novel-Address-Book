@@ -32,7 +32,7 @@ describe('GeolocationField tests', () => {
   })
 
   it('should be able to select and click on one of the options', async () => {
-    // Fake geocoding function
+    // Fake geocoding function, used by getLatLng and geocodeByAddress helper functions
     window.google.maps.Geocoder = class {
       geocode(input, callback) {
         const response = {
@@ -76,6 +76,7 @@ describe('GeolocationField tests', () => {
       })
       // Check that things were called with the correct information
       // The lat and longitude are set in the mock above
+      // These will be dealt with by the parent component in-situ
       expect(fakeAddressHook).toBeCalledWith('fake place 3');
       expect(fakeLocationHook).toBeCalledWith({lat: 41, lng: 1});
     })

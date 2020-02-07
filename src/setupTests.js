@@ -49,27 +49,6 @@ window.google = {
                   },
                   
                 ], 'OK')
-                /*
-              return (
-                [
-                  {
-                    active: false,
-                    description: 'fake place 1',
-                    id: 1
-                  },
-                  {
-                    active: false,
-                    description: 'fake place 2',
-                    id: 2
-                  },
-                  {
-                    active: true,
-                    description: 'fake place 3',
-                    id: 3
-                  },
-                ]
-              )
-              */
             }
           },
           PlacesServiceStatus: {
@@ -96,5 +75,8 @@ window.google = {
       Geocoder:class{
           geocode() {}
       },
+      GeocoderStatus: {
+        OK: 'OK'
+      }
   }
 };
