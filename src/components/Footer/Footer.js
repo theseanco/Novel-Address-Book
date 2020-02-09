@@ -6,7 +6,7 @@ Footer component containing my name and the current year
 
 import React from 'react';
 
-const Header = () => {
+const Footer = () => {
 
   // Get current year
   const date = new Date().getFullYear();
@@ -18,4 +18,4 @@ const Header = () => {
   )
 }
 
-export default Header;
+export default Footer;
